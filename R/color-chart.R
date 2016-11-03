@@ -27,12 +27,12 @@
 ColorChart <- function(palette = NULL) {
   if (is.null(palette)) {
     palette <- c(
-      'solarOrange' = solarOrange,
-      'spaceBlue'   = spaceBlue,
-      'callierGray' = callierGray,
-      'sparkOrange' = sparkOrange,
-      'stratosBlue' = stratosBlue,
-      'skyBlue'     = skyBlue
+      'solarOrange' = callier::solarOrange,
+      'spaceBlue'   = callier::spaceBlue,
+      'callierGray' = callier::callierGray,
+      'sparkOrange' = callier::sparkOrange,
+      'stratosBlue' = callier::stratosBlue,
+      'skyBlue'     = callier::skyBlue
     )
   }
   if (is.null(names(palette))) {
