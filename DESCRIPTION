@@ -1,7 +1,7 @@
 Package: callier
 Title: Color Palettes and Scales for the Callier Center for Communication Disorders
 Version: 0.0.0.9000
-Authors@R: person("Patrick", "Reidy", email = "first.last@example.com", role = c("aut", "cre"))
+Authors@R: person("Patrick", "Reidy", email = "reidy@utdallas.edu", role = c("aut", "cre"))
 Description: An implementation of the color schemes set out by the Graphic
     Standards for the Callier Center for Communication Disorders.
 Depends:
