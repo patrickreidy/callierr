@@ -31,6 +31,9 @@ scale_color_callier <- function(scheme, steps, ...) {
     if ('lightest' %in% names(.other_args)) {
       .args <- c(.args, list('lightest' = .other_args[['lightest']]))
     }
+    if ('direction' %in% names(.other_args)) {
+      .args <- c(.args, list('direction' = .other_args[['direction']]))
+    }
     .values <- do.call(what = CallierSequential, args = .args)
   } else if (length(grep(pattern = '^div', x = tolower(scheme))) == 1) {
     # Diverging scale.
@@ -43,7 +46,7 @@ scale_color_callier <- function(scheme, steps, ...) {
     }
     .values <- do.call(what = CallierDiverging, args = .args)
   }
-  .scale_args <- setdiff(names(.other_args), c('hue', 'lower', 'lightest'))
+  .scale_args <- setdiff(names(.other_args), c('hue', 'lower', 'lightest', 'direction'))
   if (length(.scale_args) > 0) {
     .scale_args <- .other_args[.scale_args]
   } else {

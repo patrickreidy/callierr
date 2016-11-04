@@ -62,24 +62,32 @@ CallierQualitative <- function(steps) {
 #' the anchor are determined by linearly interpolating values between
 #' \code{lightest} and the lightness-value of the anchor color.
 #'
+#' If \code{direction} is matched by \code{'inc'} (increasing), then the
+#' sequential palette progresses from lighter to darker tints.
+#' If \code{direction} is matched by \code{'dec'} (decreasing), then the
+#' sequential palette progresses from darker to lighter tints.
+#'
 #' @param steps An integer, the number of tints in the palette.
-#' @param hue A character string that is matched by either \code{'orange'},
-#'   \code{'blue'}, or \code{'gray'}. Default is \code{'orange'}.
+#' @param hue A character string that is matched by either \code{'or'} (orange),
+#'   \code{'bl'} (blue), or \code{'gr'} (gray). Default is \code{'orange'}.
 #' @param lightest A numeric between 0 and 1 that denotes the lightness of the
 #'   lightest tint in the palatte. Values closer to 0 are darker; those
 #'   closer to 1 are lighter. Default is 0.85.
+#' @param direction A character string that is matched by either
+#'   \code{'inc'} (increasing) or \code{'dec'} (decreasing). Default is
+#'   \code{'increasing'}.
 #' @return A character vector of hexadecimal codes for colors in the
 #'   RGB (red-green-blue) color model. The first hexadecimal code denotes the
 #'   lightest tint in the palette; the last hexadecimal code denotes the
 #'   darkest.
 #' @seealso \code{\link{CallierQualitative}}, \code{\link{CallierDiverging}}
 #' @export
-CallierSequential <- function(steps, hue = 'orange', lightest = 0.85) {
-  if (length(grep(pattern = 'orange', x = tolower(hue))) == 1) {
+CallierSequential <- function(steps, hue = 'orange', lightest = 0.85, direction = 'increasing') {
+  if (length(grep(pattern = 'or', x = tolower(hue))) == 1) {
     .anchor = as.hsl(callier::solarOrange)
-  } else if (length(grep(pattern = 'blue', x = tolower(hue))) == 1) {
+  } else if (length(grep(pattern = 'bl', x = tolower(hue))) == 1) {
     .anchor = as.hsl(callier::spaceBlue)
-  } else if (length(grep(pattern = 'gray', x = tolower(hue))) == 1) {
+  } else if (length(grep(pattern = 'gr', x = tolower(hue))) == 1) {
     .anchor = as.hsl(callier::callierGray)
   }
   .h <- .anchor['h']
@@ -94,6 +102,9 @@ CallierSequential <- function(steps, hue = 'orange', lightest = 0.85) {
     }
   } else {
     .sequential <- NULL
+  }
+  if (length(grep(pattern = 'dec', x = tolower(direction))) == 1) {
+    .sequential <- rev(.sequential)
   }
   return(.sequential)
 }

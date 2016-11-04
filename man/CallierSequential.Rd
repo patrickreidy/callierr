@@ -4,17 +4,22 @@
 \alias{CallierSequential}
 \title{Create Sequential Color Palettes with Callier Center Colors}
 \usage{
-CallierSequential(steps, hue = "orange", lightest = 0.85)
+CallierSequential(steps, hue = "orange", lightest = 0.85,
+  direction = "increasing")
 }
 \arguments{
 \item{steps}{An integer, the number of tints in the palette.}
 
-\item{hue}{A character string that is matched by either \code{'orange'},
-\code{'blue'}, or \code{'gray'}. Default is \code{'orange'}.}
+\item{hue}{A character string that is matched by either \code{'or'} (orange),
+\code{'bl'} (blue), or \code{'gr'} (gray). Default is \code{'orange'}.}
 
 \item{lightest}{A numeric between 0 and 1 that denotes the lightness of the
 lightest tint in the palatte. Values closer to 0 are darker; those
 closer to 1 are lighter. Default is 0.85.}
+
+\item{direction}{A character string that is matched by either
+\code{'inc'} (increasing) or \code{'dec'} (decreasing). Default is
+\code{'increasing'}.}
 }
 \value{
 A character vector of hexadecimal codes for colors in the
@@ -45,6 +50,11 @@ The lightness of the lightest tint in the palette is equal to the
 \code{lightest} argument. The tints that fall between the lightest tint and
 the anchor are determined by linearly interpolating values between
 \code{lightest} and the lightness-value of the anchor color.
+
+If \code{direction} is matched by \code{'inc'} (increasing), then the
+sequential palette progresses from lighter to darker tints.
+If \code{direction} is matched by \code{'dec'} (decreasing), then the
+sequential palette progresses from darker to lighter tints.
 }
 \seealso{
 \code{\link{CallierQualitative}}, \code{\link{CallierDiverging}}
