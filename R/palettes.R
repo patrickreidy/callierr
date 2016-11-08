@@ -95,7 +95,7 @@ CallierSequential <- function(steps, hue = 'orange', lightest = 0.85, direction 
   .l <- .anchor['l']
   if (lightest > .l) {
     .sequential <- character()
-    for (.l_step in seq(from = lightest, to = .l, length.out = steps)) {
+    for (.l_step in rev(seq(from = .l, to = lightest, length.out = steps))) {
       .hsl <- c('h' = .h, 's' = .s, 'l' = round(.l_step, digits = 2))
       names(.hsl) <- c('h', 's', 'l')
       .sequential <- c(.sequential, as.hex(x = .hsl))
