@@ -4,11 +4,11 @@
 \alias{CallierSequential}
 \title{Create Sequential Color Palettes with Callier Center Colors}
 \usage{
-CallierSequential(steps, hue = "orange", lightest = 0.85,
+CallierSequential(steps = 3, hue = "orange", lightest = 0.85,
   direction = "increasing")
 }
 \arguments{
-\item{steps}{An integer, the number of tints in the palette.}
+\item{steps}{An integer, the number of tints in the palette. Default is 3.}
 
 \item{hue}{A character string that is matched by either \code{'or'} (orange),
 \code{'bl'} (blue), or \code{'gr'} (gray). Default is \code{'orange'}.}

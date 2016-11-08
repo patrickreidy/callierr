@@ -4,10 +4,10 @@
 \alias{CallierDiverging}
 \title{Create Diverging Color Palettes with Callier Colors}
 \usage{
-CallierDiverging(steps, lower = "orange", lightest = 0.85)
+CallierDiverging(steps = 3, lower = "orange", lightest = 0.85)
 }
 \arguments{
-\item{steps}{An integer, the number of colors in the palette.}
+\item{steps}{An integer, the number of colors in the palette. Default is 3.}
 
 \item{lower}{A character string that must be matched by either \code{'orange'}
 or \code{'blue'}. Default is \code{'orange'}.}

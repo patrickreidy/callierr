@@ -4,10 +4,10 @@
 \alias{CallierQualitative}
 \title{Create Qualitative Color Palettes with Callier Center Colors}
 \usage{
-CallierQualitative(steps)
+CallierQualitative(steps = 3)
 }
 \arguments{
-\item{steps}{An integer, the number of colors in the palette.}
+\item{steps}{An integer, the number of colors in the palette. Default is 3.}
 }
 \value{
 A character vector of hexadecimal codes for the Callier Center colors.

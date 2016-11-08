@@ -19,14 +19,14 @@
 #' colors all repeat hues (orange or blue) that are already represented in the
 #' primary Callier Center colors.
 #'
-#' @param steps An integer, the number of colors in the palette.
+#' @param steps An integer, the number of colors in the palette. Default is 3.
 #' @return A character vector of hexadecimal codes for the Callier Center colors.
 #'   If \code{steps} is greater than the number of Callier Center colors (6),
 #'   then \code{NULL} is returned; hence, this palette cannot be used for
 #'   qualitative data with more than 6 levels.
 #' @seealso \code{\link{CallierSequential}}, \code{\link{CallierDiverging}}
 #' @export
-CallierQualitative <- function(steps) {
+CallierQualitative <- function(steps = 3) {
   .callier <- c(callier::solarOrange,
                 callier::spaceBlue,
                 callier::callierGray,
@@ -67,7 +67,7 @@ CallierQualitative <- function(steps) {
 #' If \code{direction} is matched by \code{'dec'} (decreasing), then the
 #' sequential palette progresses from darker to lighter tints.
 #'
-#' @param steps An integer, the number of tints in the palette.
+#' @param steps An integer, the number of tints in the palette. Default is 3.
 #' @param hue A character string that is matched by either \code{'or'} (orange),
 #'   \code{'bl'} (blue), or \code{'gr'} (gray). Default is \code{'orange'}.
 #' @param lightest A numeric between 0 and 1 that denotes the lightness of the
@@ -82,7 +82,7 @@ CallierQualitative <- function(steps) {
 #'   darkest.
 #' @seealso \code{\link{CallierQualitative}}, \code{\link{CallierDiverging}}
 #' @export
-CallierSequential <- function(steps, hue = 'orange', lightest = 0.85, direction = 'increasing') {
+CallierSequential <- function(steps = 3, hue = 'orange', lightest = 0.85, direction = 'increasing') {
   if (length(grep(pattern = 'or', x = tolower(hue))) == 1) {
     .anchor = as.hsl(callier::solarOrange)
   } else if (length(grep(pattern = 'bl', x = tolower(hue))) == 1) {
@@ -146,7 +146,7 @@ CallierSequential <- function(steps, hue = 'orange', lightest = 0.85, direction 
 #' If the argument \code{steps} is an odd integer, then the color in the middle
 #' of the palette is the \code{lightest} tint of \code{callierGray}.
 #'
-#' @param steps An integer, the number of colors in the palette.
+#' @param steps An integer, the number of colors in the palette. Default is 3.
 #' @param lower A character string that must be matched by either \code{'orange'}
 #'   or \code{'blue'}. Default is \code{'orange'}.
 #' @param lightest A numeric between 0 and 1 that denotes the lightness of the
@@ -156,14 +156,19 @@ CallierSequential <- function(steps, hue = 'orange', lightest = 0.85, direction 
 #'   RGB (red-green-blue) color model.
 #' @seealso \code{\link{CallierQualitative}}, \code{\link{CallierSequential}}
 #' @export
-CallierDiverging <- function(steps, lower = 'orange', lightest = 0.85) {
+CallierDiverging <- function(steps = 3, lower = 'orange', lightest = 0.85) {
   # orange sequence is primary.
   .orange <- CallierSequential(steps = floor(steps/2), hue = 'orange', lightest = lightest)
   # blue sequence is secondary.
   .blue <- CallierSequential(steps = floor(steps/2), hue = 'blue', lightest = lightest)
   # gray is the middle step if `steps` is odd.
   if (steps %% 2) {
-    .gray <- CallierSequential(steps = 1, hue = 'gray', lightest = lightest)
+    .grays <- CallierSequential(steps = 2, hue = 'gray', lightest = lightest)
+    if (steps > 3) {
+      .gray <- .grays[1]
+    } else {
+      .gray <- .grays[2]
+    }
   } else {
     .gray <- NULL
   }
