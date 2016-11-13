@@ -10,7 +10,14 @@ sparkOrange <- '#FFB612'
 stratosBlue <- '#00A1DE'
 skyBlue     <- '#5BC6EB'
 
+# Tertiary Callier Center colors (UT Dallas colors in the green hue)
+ecoGreen      <- '#008542'
+saplingGreen  <- '#69BE28'
+seedlingGreen <- '#C9DD03'
+
 devtools::use_data(
-  solarOrange, spaceBlue, callierGray, sparkOrange, stratosBlue, skyBlue,
-  internal = FALSE, overwrite = FALSE
+  solarOrange, spaceBlue, callierGray,
+  sparkOrange, stratosBlue, skyBlue,
+  ecoGreen, saplingGreen, seedlingGreen,
+  internal = FALSE, overwrite = TRUE
 )

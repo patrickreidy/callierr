@@ -8,13 +8,14 @@
 \title{Spark Orange}
 \format{A character string, \code{'#FFB612'}.}
 \source{
-Callier Center Graphic Standards Manual
+Callier Center Graphic Standards Manual,
+  UT Dallas Brand Standards (\url{https://www.utdallas.edu/brand/palette/})
 }
 \usage{
 sparkOrange
 }
 \description{
-The hexadecimal code that specifies Pantone 1235 orange ('spark orange'),
+The hexadecimal code that specifies Pantone 1235 ('spark orange'),
 which corresponds to 255-182-18 in the RGB (red-green-blue) color model.
 }
 \details{

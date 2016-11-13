@@ -8,13 +8,14 @@
 \title{Space Blue}
 \format{A character string, \code{'#0039A6'}.}
 \source{
-Callier Center Graphic Standards Manual
+Callier Center Graphic Standards Manual,
+  UT Dallas Brand Standards (\url{https://www.utdallas.edu/brand/palette/})
 }
 \usage{
 spaceBlue
 }
 \description{
-The hexadecimal code that specifies Pantone 286 blue ('space blue'),
+The hexadecimal code that specifies Pantone 286 ('space blue'),
 which corresponds to 0-57-166 in the RGB (red-green-blue) color model.
 }
 \details{

@@ -32,7 +32,10 @@ CallierQualitative <- function(steps = 3) {
                 callier::callierGray,
                 callier::sparkOrange,
                 callier::stratosBlue,
-                callier::skyBlue)
+                callier::skyBlue,
+                callier::ecoGreen,
+                callier::saplingGreen,
+                callier::seedlingGreen)
   .palette <- .callier[1:steps]
   return(.palette)
 }

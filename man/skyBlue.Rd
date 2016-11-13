@@ -8,13 +8,14 @@
 \title{Sky Blue}
 \format{A character string, \code{'#5BC6EB'}.}
 \source{
-Callier Center Graphic Standards Manual
+Callier Center Graphic Standards Manual,
+  UT Dallas Brand Standards (\url{https://www.utdallas.edu/brand/palette/})
 }
 \usage{
 skyBlue
 }
 \description{
-The hexadecimal code that specifies Pantone 2985 blue ('sky blue'),
+The hexadecimal code that specifies Pantone 2985 ('sky blue'),
 which corresponds to 91-198-232 in the RGB (red-green-blue) color model.
 }
 \details{

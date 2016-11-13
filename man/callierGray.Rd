@@ -8,7 +8,8 @@
 \title{Callier Gray}
 \format{A character string, \code{'#766A62'}.}
 \source{
-Callier Center Graphic Standards Manual
+Callier Center Graphic Standards Manual,
+  UT Dallas Brand Standards (\url{https://www.utdallas.edu/brand/palette/})
 }
 \usage{
 callierGray

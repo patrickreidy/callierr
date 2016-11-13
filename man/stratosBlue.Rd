@@ -8,13 +8,14 @@
 \title{Stratos Blue}
 \format{A character string, \code{'#00A1DE'}.}
 \source{
-Callier Center Graphic Standards Manual
+Callier Center Graphic Standards Manual,
+  UT Dallas Brand Standards (\url{https://www.utdallas.edu/brand/palette/})
 }
 \usage{
 stratosBlue
 }
 \description{
-The hexadecimal code that specifies Pantone 299 blue ('stratos blue'),
+The hexadecimal code that specifies Pantone 299 ('stratos blue'),
 which corresponds to 0-161-222 in the RGB (red-green-blue) color model.
 }
 \details{

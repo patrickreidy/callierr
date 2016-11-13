@@ -8,13 +8,14 @@
 \title{Solar Orange}
 \format{A character string, \code{'#E98300'}.}
 \source{
-Callier Center Graphic Standards Manual
+Callier Center Graphic Standards Manual,
+  UT Dallas Brand Standards (\url{https://www.utdallas.edu/brand/palette/})
 }
 \usage{
 solarOrange
 }
 \description{
-The hexadecimal code that specifies Pantone 144 orange ('solar orange'),
+The hexadecimal code that specifies Pantone 144 ('solar orange'),
 which corresponds to 233-131-0 in the RGB (red-green-blue) color model.
 }
 \details{

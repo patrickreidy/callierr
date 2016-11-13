@@ -21,6 +21,12 @@
 #'
 #' skyBlue
 #'
+#' ecoGreen
+#'
+#' saplingGreen
+#'
+#' seedlingGreen
+#'
 #' @section Color-model converters (internal):
 #' as.hex()
 #'
