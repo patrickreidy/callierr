@@ -7,7 +7,13 @@
 CallierDiverging(steps = 3, lower = "orange", lightest = 0.85)
 }
 \arguments{
-\item{steps}{An integer, the number of colors in the palette. Default is 3.}
+\item{steps}{An integer or list. Default is 3.
+If \code{steps} is an integer, it controls only the number of colors in
+the palette.
+If \code{steps} is a list, it should comprise character vectors that
+partition the variable mapped onto the color palette.
+Furthermore, the elments of the list should be named
+\code{'orange'}, \code{'blue'}, or \code{'gray'}.}
 
 \item{lower}{A character string that must be matched by either \code{'orange'}
 or \code{'blue'}. Default is \code{'orange'}.}

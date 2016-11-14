@@ -3,9 +3,11 @@
 #' Create Qualitative Color Palettes with Callier Center Colors
 #'
 #' \code{CallierQualitative()} creates a qualitative color palette based on
-#' the primary and secondary Callier Center colors, in the following order of
-#' precedence: solar orange, space blue, callier gray, spark orange,
-#' stratos blue, sky blue.
+#' the primary, secondary, and tertiary Callier Center colors, in the following
+#' order of precedence:
+#' solar orange, space blue, callier gray,
+#' spark orange, stratos blue, sky blue,
+#' eco green, sapling green, and seedling green.
 #'
 #' A qualitative color palette does not imply magnitude differences between
 #' levels in the data. As such, a qualitative palette is best suited to
@@ -19,11 +21,27 @@
 #' colors all repeat hues (orange or blue) that are already represented in the
 #' primary Callier Center colors.
 #'
-#' @param steps An integer, the number of colors in the palette. Default is 3.
+#' If \code{steps} is a character vector, its entries should correspond
+#' exhaustively to the levels of the variable that is being mapped onto the
+#' color palette. The number of colors in the returned palette is equal to the
+#' length of \code{steps}. The mapping from \code{steps} onto Callier Center
+#' colors preserves the order of elements in \code{steps} and the order of
+#' precedence in the Callier Center colors: i.e., the first element of
+#' \code{steps} is mapped to \code{solarOrange}; the second element, to
+#' \code{spaceBlue}; and so on.
+#'
+#' If \code{steps} is an integer, then it controls only the number of
+#' Callier Center colors in the returned palette. The mapping from the levels
+#' of the data variable onto Callier Center colors is inherited from however
+#' the data levels are ordered: If the variable is an ordered factor, then the
+#' data levels are mapped in that order. If the variable is unordered, then
+#' the data levels are mapped alphabetically.
+#'
+#' @param steps An integer or character vector. Default is 3.
 #' @return A character vector of hexadecimal codes for the Callier Center colors.
-#'   If \code{steps} is greater than the number of Callier Center colors (6),
+#'   If \code{steps} is greater than the number of Callier Center colors (9),
 #'   then \code{NULL} is returned; hence, this palette cannot be used for
-#'   qualitative data with more than 6 levels.
+#'   qualitative data with more than 9 levels.
 #' @seealso \code{\link{CallierSequential}}, \code{\link{CallierDiverging}}
 #' @export
 CallierQualitative <- function(steps = 3) {
@@ -36,7 +54,12 @@ CallierQualitative <- function(steps = 3) {
                 callier::ecoGreen,
                 callier::saplingGreen,
                 callier::seedlingGreen)
-  .palette <- .callier[1:steps]
+  if (is.numeric(steps)) {
+    .palette <- .callier[1:steps]
+  } else if (is.character(steps)) {
+    .palette <- .callier[1:length(steps)]
+    names(.palette) <- steps
+  }
   return(.palette)
 }
 
@@ -70,7 +93,12 @@ CallierQualitative <- function(steps = 3) {
 #' If \code{direction} is matched by \code{'dec'} (decreasing), then the
 #' sequential palette progresses from darker to lighter tints.
 #'
-#' @param steps An integer, the number of tints in the palette. Default is 3.
+#' @param steps An integer or character vector. Default is 3.
+#'   If \code{steps} is an integer, it only controls the number of tints in
+#'   the palette.
+#'   If \code{steps} is a character vector, it should correspond
+#'   exhaustively to the levels of the variable that is mapped onto the
+#'   palette.
 #' @param hue A character string that is matched by either \code{'or'} (orange),
 #'   \code{'bl'} (blue), or \code{'gr'} (gray). Default is \code{'orange'}.
 #' @param lightest A numeric between 0 and 1 that denotes the lightness of the
@@ -97,8 +125,15 @@ CallierSequential <- function(steps = 3, hue = 'orange', lightest = 0.85, direct
   .s <- .anchor['s']
   .l <- .anchor['l']
   if (lightest > .l) {
+    if (is.numeric(steps)) {
+      .n <- steps
+      .names <- NULL
+    } else if (is.character(steps)) {
+      .n <- length(steps)
+      .names <- steps
+    }
     .sequential <- character()
-    for (.l_step in rev(seq(from = .l, to = lightest, length.out = steps))) {
+    for (.l_step in rev(seq(from = .l, to = lightest, length.out = .n))) {
       .hsl <- c('h' = .h, 's' = .s, 'l' = round(.l_step, digits = 2))
       names(.hsl) <- c('h', 's', 'l')
       .sequential <- c(.sequential, as.hex(x = .hsl))
@@ -109,6 +144,7 @@ CallierSequential <- function(steps = 3, hue = 'orange', lightest = 0.85, direct
   if (length(grep(pattern = 'dec', x = tolower(direction))) == 1) {
     .sequential <- rev(.sequential)
   }
+  names(.sequential) <- .names
   return(.sequential)
 }
 
@@ -139,7 +175,7 @@ CallierSequential <- function(steps = 3, hue = 'orange', lightest = 0.85, direct
 #' Give some consideration to the type of data that are being represented on
 #' the diverging palette and how the structure of that data relates to physical
 #' properties of blue and orange hues. (Blue hues have a shorter wavelength
-#'and a higher frequency than orange hues.) For example, if the data
+#' and a higher frequency than orange hues.) For example, if the data
 #' represented on the diverging palette are (audible) frequencies, then a
 #' palette with orange hues on the \code{lower} end will parallel the order of
 #' the visible frequency scale. Conversely, if the data are distances, then a
@@ -149,7 +185,13 @@ CallierSequential <- function(steps = 3, hue = 'orange', lightest = 0.85, direct
 #' If the argument \code{steps} is an odd integer, then the color in the middle
 #' of the palette is the \code{lightest} tint of \code{callierGray}.
 #'
-#' @param steps An integer, the number of colors in the palette. Default is 3.
+#' @param steps An integer or list. Default is 3.
+#'   If \code{steps} is an integer, it controls only the number of colors in
+#'   the palette.
+#'   If \code{steps} is a list, it should comprise character vectors that
+#'   partition the variable mapped onto the color palette.
+#'   Furthermore, the elments of the list should be named
+#'   \code{'orange'}, \code{'blue'}, or \code{'gray'}.
 #' @param lower A character string that must be matched by either \code{'orange'}
 #'   or \code{'blue'}. Default is \code{'orange'}.
 #' @param lightest A numeric between 0 and 1 that denotes the lightness of the
@@ -160,24 +202,52 @@ CallierSequential <- function(steps = 3, hue = 'orange', lightest = 0.85, direct
 #' @seealso \code{\link{CallierQualitative}}, \code{\link{CallierSequential}}
 #' @export
 CallierDiverging <- function(steps = 3, lower = 'orange', lightest = 0.85) {
-  # orange sequence is primary.
-  .orange <- CallierSequential(steps = floor(steps/2), hue = 'orange', lightest = lightest)
-  # blue sequence is secondary.
-  .blue <- CallierSequential(steps = floor(steps/2), hue = 'blue', lightest = lightest)
-  # gray is the middle step if `steps` is odd.
-  if (steps %% 2) {
-    .grays <- CallierSequential(steps = 2, hue = 'gray', lightest = lightest)
-    if (steps > 3) {
-      .gray <- .grays[1]
+  .diverging <- NULL
+  if (is.numeric(steps)) {
+    # orange sequence is primary.
+    .orange <- CallierSequential(steps = floor(steps/2),
+                                 hue = 'orange',
+                                 lightest = lightest)
+    # blue sequence is secondary.
+    .blue <- CallierSequential(steps = floor(steps/2),
+                               hue = 'blue',
+                               lightest = lightest)
+    # gray is the middle step if `steps` is odd.
+    if (steps %% 2) {
+      .grays <- CallierSequential(steps = 2,
+                                  hue = 'gray',
+                                  lightest = lightest)
+      if (steps > 3) {
+        .gray <- .grays[1]
+      } else {
+        .gray <- .grays[2]
+      }
     } else {
-      .gray <- .grays[2]
+      .gray <- NULL
     }
-  } else {
-    .gray <- NULL
-  }
-  .diverging <- c(rev(.orange), .gray, .blue)
-  if (length(grep(pattern = 'blue', x = tolower(lower))) == 1) {
-    .diverging <- rev(.diverging)
+    .diverging <- c(rev(.orange), .gray, .blue)
+    if (length(grep(pattern = 'blue', x = tolower(lower))) == 1) {
+      .diverging <- rev(.diverging)
+    }
+  } else if (is.list(steps)) {
+    if (length(steps) < 2 |length(steps) > 3 | (length(steps) == 3 & length(steps[[2]]) != 1)) {
+      .diverging <- NULL
+    } else {
+      .left <- CallierSequential(steps = steps[[1]],
+                                 hue = names(steps)[1],
+                                 direction = 'decreasing')
+      .right <- CallierSequential(steps = steps[[length(steps)]],
+                                  hue = names(steps)[length(steps)],
+                                  direction = 'increasing')
+      if (length(steps) == 3) {
+        .middle <- CallierSequential(steps = steps[[2]],
+                                     hue = names(steps)[2])
+      } else {
+        .middle <- NULL
+      }
+      .diverging <- c(.left, .middle, .right)
+      names(.diverging) <- Reduce(c, steps)
+    }
   }
   return(.diverging)
 }

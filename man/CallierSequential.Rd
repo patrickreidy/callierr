@@ -8,7 +8,12 @@ CallierSequential(steps = 3, hue = "orange", lightest = 0.85,
   direction = "increasing")
 }
 \arguments{
-\item{steps}{An integer, the number of tints in the palette. Default is 3.}
+\item{steps}{An integer or character vector. Default is 3.
+If \code{steps} is an integer, it only controls the number of tints in
+the palette.
+If \code{steps} is a character vector, it should correspond
+exhaustively to the levels of the variable that is mapped onto the
+palette.}
 
 \item{hue}{A character string that is matched by either \code{'or'} (orange),
 \code{'bl'} (blue), or \code{'gr'} (gray). Default is \code{'orange'}.}
