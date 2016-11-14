@@ -4,11 +4,16 @@
 \alias{ColorChart}
 \title{Print a Color Chart for a Palette}
 \usage{
-ColorChart(palette = NULL)
+ColorChart(palette = NULL, colorblind = TRUE)
 }
 \arguments{
 \item{palette}{\code{NULL} (default) or a character vector, whose entries
 are hexadecimal codes for values in the RGB (red-green-blue) color model.}
+
+\item{colorblind}{Logical that determines whether simulations of
+color blindness (deuteranopia, protanopia, tritanopia) are shown
+(\code{TRUE}) or not (\code{FALSE)}) along with the trichromat color
+palette. Default is \code{TRUE}.}
 }
 \value{
 A \code{ggplot} object with the following aesthetics:

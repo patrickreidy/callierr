@@ -16,6 +16,10 @@
 #'
 #' @param palette \code{NULL} (default) or a character vector, whose entries
 #'   are hexadecimal codes for values in the RGB (red-green-blue) color model.
+#' @param colorblind Logical that determines whether simulations of
+#'   color blindness (deuteranopia, protanopia, tritanopia) are shown
+#'   (\code{TRUE}) or not (\code{FALSE)}) along with the trichromat color
+#'   palette. Default is \code{TRUE}.
 #' @return A \code{ggplot} object with the following aesthetics:
 #'   colors are ordered as they occur in \code{palette} and mapped to the
 #'   x-dimension, with the x-axis labeled by hexadecimal codes;
@@ -24,7 +28,7 @@
 #' @importFrom dichromat dichromat
 #' @importFrom ggplot2 aes ggplot theme_bw geom_point
 #' @export
-ColorChart <- function(palette = NULL) {
+ColorChart <- function(palette = NULL, colorblind = TRUE) {
   if (is.null(palette)) {
     palette <- c(
       'solarOrange'   = callier::solarOrange,
@@ -41,50 +45,62 @@ ColorChart <- function(palette = NULL) {
   if (is.null(names(palette))) {
     names(palette) <- palette
   }
-  # Rectangularize the information in `.primary` and `.secondary`.
+  # Rectangularize the information in `palette`.
   .callier <- data.frame(
     Vision = 'Trichromat',
     Color  = names(palette),
     Hex    = palette,
     stringsAsFactors = FALSE
   )
-  # Map the `.callier` scheme to different forms of dichromatism.
-  .schemes <- rbind(
-    .callier,
-    within(.callier, {
-      Vision <- 'Deuteranopia'
-      Hex    <- dichromat::dichromat(Hex, type = 'deutan')
-    }),
-    within(.callier, {
-      Vision <- 'Protanopia'
-      Hex    <- dichromat::dichromat(Hex, type = 'protan')
-    }),
-    within(.callier, {
-      Vision <- 'Tritanopia'
-      Hex    <- dichromat::dichromat(Hex, type = 'tritan')
-    })
-  )
-  # Factor the variables in `.schemes`.
-  .schemes <- within(.schemes, {
-    Vision <- factor(
-      Vision,
-      levels = c('Tritanopia', 'Protanopia', 'Deuteranopia', 'Trichromat')
+  if (colorblind) {
+    # Map the `.callier` scheme to different forms of dichromatism.
+    .schemes <- rbind(
+      .callier,
+      within(.callier, {
+        Vision <- 'Deuteranopia'
+        Hex    <- dichromat::dichromat(Hex, type = 'deutan')
+      }),
+      within(.callier, {
+        Vision <- 'Protanopia'
+        Hex    <- dichromat::dichromat(Hex, type = 'protan')
+      }),
+      within(.callier, {
+        Vision <- 'Tritanopia'
+        Hex    <- dichromat::dichromat(Hex, type = 'tritan')
+      })
     )
-    Color  <- factor(Color, names(palette))
-  })
-  # Partition `.schemes` by level of $Vision.
-  .trichrom <- subset(.schemes, as.character(Vision) == 'Trichromat')
-  .deuteran <- subset(.schemes, as.character(Vision) == 'Deuteranopia')
-  .protan   <- subset(.schemes, as.character(Vision) == 'Protanopia')
-  .tritan   <- subset(.schemes, as.character(Vision) == 'Tritanopia')
-  # Plot.
-  .x <- ggplot2::ggplot(data = .schemes, ggplot2::aes(x = Color, y = Vision)) +
-    ggplot2::theme_bw() +
-    ggplot2::geom_point(data = .schemes, colour = 'white', size = 1) +
-    ggplot2::geom_point(data = .trichrom, colour = .trichrom$Hex, size = 25) +
-    ggplot2::geom_point(data = .deuteran, colour = .deuteran$Hex, size = 25) +
-    ggplot2::geom_point(data = .protan, colour = .protan$Hex, size = 25) +
-    ggplot2::geom_point(data = .tritan, colour = .tritan$Hex, size = 25)
+    # Factor the variables in `.schemes`.
+    .schemes <- within(.schemes, {
+      Vision <- factor(
+        Vision,
+        levels = c('Tritanopia', 'Protanopia', 'Deuteranopia', 'Trichromat')
+      )
+      Color  <- factor(Color, names(palette))
+    })
+    # Partition `.schemes` by level of $Vision.
+    .trichrom <- subset(.schemes, as.character(Vision) == 'Trichromat')
+    .deuteran <- subset(.schemes, as.character(Vision) == 'Deuteranopia')
+    .protan   <- subset(.schemes, as.character(Vision) == 'Protanopia')
+    .tritan   <- subset(.schemes, as.character(Vision) == 'Tritanopia')
+    # Plot.
+    .x <- ggplot2::ggplot(data = .schemes, ggplot2::aes(x = Color, y = Vision)) +
+      ggplot2::theme_bw() +
+      ggplot2::geom_point(data = .schemes, colour = 'white', size = 1) +
+      ggplot2::geom_point(data = .trichrom, colour = .trichrom$Hex, size = 25) +
+      ggplot2::geom_point(data = .deuteran, colour = .deuteran$Hex, size = 25) +
+      ggplot2::geom_point(data = .protan, colour = .protan$Hex, size = 25) +
+      ggplot2::geom_point(data = .tritan, colour = .tritan$Hex, size = 25)
+  } else {
+    .callier <- within(.callier, {
+      Vision <- ''
+      Color <- factor(Color, names(palette))
+    })
+    .x <- ggplot2::ggplot(data = .callier, ggplot2::aes(x = Color, y = Vision)) +
+      ggplot2::theme_bw() +
+      ggplot2::ylab('') +
+      ggplot2::scale_y_discrete(breaks = NULL) +
+      ggplot2::geom_point(data = .callier, colour = .callier$Hex, size = 25)
+  }
   return(.x)
 }
 
