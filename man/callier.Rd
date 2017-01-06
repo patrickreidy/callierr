@@ -50,11 +50,15 @@ for Communication Disorders.
 
 \section{Scale constructors (for ggplot objects)}{
 
-scale_color_callier()
+  \itemize{
+    \item \code{\link{scale_color_callier}()}: create a ggplot color scale using Callier Center colors
+  }
 }
 
 \section{Other functions}{
 
-ColorChart()
+  \itemize{
+    \item \code{\link{ColorChart}()}: print a color chart (a grid of color chips) for a palette
+  }
 }
 
