@@ -12,11 +12,17 @@
 #' solar orange; two-color images should use solar orange and space blue; and
 #' three-color images should use solar orange, space blue, and callier gray.
 #'
+#' @return A character string, \code{'#E98300'}.
+#'
 #' @aliases #E98300 #e98300
-#' @format A character string, \code{'#E98300'}.
+#'
 #' @source Callier Center Graphic Standards Manual,
 #'   UT Dallas Brand Standards (\url{https://www.utdallas.edu/brand/palette/})
-'solarOrange'
+#'
+#' @export
+solarOrange <- function() {
+  '#E98300'
+}
 
 #' Space Blue
 #'
@@ -31,11 +37,17 @@
 #' solar orange; two-color images should use solar orange and space blue; and
 #' three-color images should use solar orange, space blue, and callier gray.
 #'
+#' @return A character string, \code{'#0039A6'}.
+#'
 #' @aliases #0039A6 #0039a6
-#' @format A character string, \code{'#0039A6'}.
+#'
 #' @source Callier Center Graphic Standards Manual,
 #'   UT Dallas Brand Standards (\url{https://www.utdallas.edu/brand/palette/})
-'spaceBlue'
+#'
+#' @export
+spaceBlue <- function() {
+  '#0039A6'
+}
 
 #' Callier Gray
 #'
@@ -50,11 +62,17 @@
 #' solar orange; two-color images should use solar orange and space blue; and
 #' three-color images should use solar orange, space blue, and callier gray.
 #'
+#' @return A character string, \code{'#766A62'}.
+#'
 #' @aliases #766A62 #766a62
-#' @format A character string, \code{'#766A62'}.
+#'
 #' @source Callier Center Graphic Standards Manual,
 #'   UT Dallas Brand Standards (\url{https://www.utdallas.edu/brand/palette/})
-'callierGray'
+#'
+#' @export
+callierGray <- function() {
+  '#766A62'
+}
 
 #' Spark Orange
 #'
@@ -65,11 +83,17 @@
 #' (spark orange, stratos blue, sky blue) that are preferred as accents to
 #' complement the primary Callier Center colors in print or electronic formats.
 #'
+#' @return A character string, \code{'#FFB612'}.
+#'
 #' @aliases #FFB612 #ffb612
-#' @format A character string, \code{'#FFB612'}.
+#'
 #' @source Callier Center Graphic Standards Manual,
 #'   UT Dallas Brand Standards (\url{https://www.utdallas.edu/brand/palette/})
-'sparkOrange'
+#'
+#' @export
+sparkOrange <- function() {
+  '#FFB612'
+}
 
 #' Stratos Blue
 #'
@@ -80,11 +104,17 @@
 #' (spark orange, stratos blue, sky blue) that are preferred as accents to
 #' complement the primary Callier Center colors in print or electronic formats.
 #'
+#' @return A character string, \code{'#00A1DE'}.
+#'
 #' @aliases #00A1DE #00a1de
-#' @format A character string, \code{'#00A1DE'}.
+#'
 #' @source Callier Center Graphic Standards Manual,
 #'   UT Dallas Brand Standards (\url{https://www.utdallas.edu/brand/palette/})
-'stratosBlue'
+#'
+#' @export
+stratosBlue <- function() {
+  '#00A1DE'
+}
 
 #' Sky Blue
 #'
@@ -95,11 +125,16 @@
 #' (spark orange, stratos blue, sky blue) that are preferred as accents to
 #' complement the primary Callier Center colors in print or electronic formats.
 #'
+#' @return A character string, \code{'#5BC6EB'}.
+#'
 #' @aliases #5BC6EB #5bc6eb
-#' @format A character string, \code{'#5BC6EB'}.
+#'
 #' @source Callier Center Graphic Standards Manual,
 #'   UT Dallas Brand Standards (\url{https://www.utdallas.edu/brand/palette/})
-'skyBlue'
+#' @export
+skyBlue <- function() {
+  '#5BC6EB'
+}
 
 
 #' Eco Green
@@ -113,11 +148,16 @@
 #' The tertiary Callier Center colors are the three green-hued colors from the
 #' UT Dallas brand color palette.
 #'
+#' @return A character string, \code{'#008542'}.
+#'
 #' @aliases #008542
-#' @format A character string, \code{'#008542'}.
+#'
 #' @source Callier Center Graphic Standards Manual,
 #'   UT Dallas Brand Standards (\url{https://www.utdallas.edu/brand/palette/})
-'ecoGreen'
+#' @export
+ecoGreen <- function() {
+  '#008542'
+}
 
 
 #' Sapling Green
@@ -131,11 +171,17 @@
 #' The tertiary Callier Center colors are the three green-hued colors from the
 #' UT Dallas brand color palette.
 #'
+#' @return A character string, \code{'#69BE28'}.
+#'
 #' @aliases #69BE28 #69be28
-#' @format A character string, \code{'#69BE28'}.
+#'
 #' @source Callier Center Graphic Standards Manual,
 #'   UT Dallas Brand Standards (\url{https://www.utdallas.edu/brand/palette/})
-'saplingGreen'
+#'
+#' @export
+saplingGreen <- function() {
+  '#69BE28'
+}
 
 
 #' Seedling Green
@@ -149,8 +195,14 @@
 #' The tertiary Callier Center colors are the three green-hued colors from the
 #' UT Dallas brand color palette.
 #'
+#' @return A character string, \code{'#C9DD03'}.
+#'
 #' @aliases #C9DD03 #c9dd03
-#' @format A character string, \code{'#C9DD03'}.
+#'
 #' @source Callier Center Graphic Standards Manual,
 #'   UT Dallas Brand Standards (\url{https://www.utdallas.edu/brand/palette/})
-'seedlingGreen'
+#'
+#' @export
+seedlingGreen <- function() {
+  '#C9DD03'
+}

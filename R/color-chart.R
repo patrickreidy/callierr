@@ -25,21 +25,19 @@
 #'   x-dimension, with the x-axis labeled by hexadecimal codes;
 #'   vision is mapped to the y-dimension, with the y-axis labeled by type of
 #'   vision (trichromat, deuteranopia, protanopia, tritanopia).
-#' @importFrom dichromat dichromat
-#' @importFrom ggplot2 aes ggplot theme_bw geom_point
 #' @export
 ColorChart <- function(palette = NULL, colorblind = TRUE) {
   if (is.null(palette)) {
     palette <- c(
-      'solarOrange'   = callier::solarOrange,
-      'spaceBlue'     = callier::spaceBlue,
-      'callierGray'   = callier::callierGray,
-      'sparkOrange'   = callier::sparkOrange,
-      'stratosBlue'   = callier::stratosBlue,
-      'skyBlue'       = callier::skyBlue,
-      'ecoGreen'      = callier::ecoGreen,
-      'saplingGreen'  = callier::saplingGreen,
-      'seedlingGreen' = callier::seedlingGreen
+      'solarOrange'   = solarOrange(),
+      'spaceBlue'     = spaceBlue(),
+      'callierGray'   = callierGray(),
+      'sparkOrange'   = sparkOrange(),
+      'stratosBlue'   = stratosBlue(),
+      'skyBlue'       = skyBlue(),
+      'ecoGreen'      = ecoGreen(),
+      'saplingGreen'  = saplingGreen(),
+      'seedlingGreen' = seedlingGreen()
     )
   }
   if (is.null(names(palette))) {

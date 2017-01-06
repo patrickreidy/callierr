@@ -45,15 +45,15 @@
 #' @seealso \code{\link{CallierSequential}}, \code{\link{CallierDiverging}}
 #' @export
 CallierQualitative <- function(steps = 3) {
-  .callier <- c(callier::solarOrange,
-                callier::spaceBlue,
-                callier::callierGray,
-                callier::sparkOrange,
-                callier::stratosBlue,
-                callier::skyBlue,
-                callier::ecoGreen,
-                callier::saplingGreen,
-                callier::seedlingGreen)
+  .callier <- c(solarOrange(),
+                spaceBlue(),
+                callierGray(),
+                sparkOrange(),
+                stratosBlue(),
+                skyBlue(),
+                ecoGreen(),
+                saplingGreen(),
+                seedlingGreen())
   if (is.numeric(steps)) {
     .palette <- .callier[1:steps]
   } else if (is.character(steps)) {
@@ -115,11 +115,11 @@ CallierQualitative <- function(steps = 3) {
 #' @export
 CallierSequential <- function(steps = 3, hue = 'orange', lightest = 0.85, direction = 'increasing') {
   if (length(grep(pattern = 'or', x = tolower(hue))) == 1) {
-    .anchor = as.hsl(callier::solarOrange)
+    .anchor = as.hsl(solarOrange())
   } else if (length(grep(pattern = 'bl', x = tolower(hue))) == 1) {
-    .anchor = as.hsl(callier::spaceBlue)
+    .anchor = as.hsl(spaceBlue())
   } else if (length(grep(pattern = 'gr', x = tolower(hue))) == 1) {
-    .anchor = as.hsl(callier::callierGray)
+    .anchor = as.hsl(callierGray())
   }
   .h <- .anchor['h']
   .s <- .anchor['s']

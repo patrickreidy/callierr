@@ -17,41 +17,35 @@ for Communication Disorders.
 
 \section{Constants}{
 
-solarOrange
-
-spaceBlue
-
-callierGray
-
-sparkOrange
-
-stratosBlue
-
-skyBlue
-
-ecoGreen
-
-saplingGreen
-
-seedlingGreen
+  \itemize{
+    \item \code{\link{solarOrange}()}
+    \item \code{\link{spaceBlue}()}
+    \item \code{\link{callierGray}()}
+    \item \code{\link{sparkOrange}()}
+    \item \code{\link{stratosBlue}()}
+    \item \code{\link{skyBlue}()}
+    \item \code{\link{ecoGreen}()}
+    \item \code{\link{saplingGreen}()}
+    \item \code{\link{seedlingGreen}()}
+  }
 }
 
 \section{Color-model converters (internal)}{
 
-as.hex()
-
-as.hsl()
-
-as.rgb()
+  \itemize{
+    \item \code{\link{as.hex}()}: convert RGB or HSL to HEX
+    \item \code{\link{as.hsl}()}: convert HEX or RGB to HSL
+    \item \code{\link{as.rgb}()}: convert HSL or HEX to RGB
+  }
 }
 
 \section{Palette constructors}{
 
-CallierQualitative()
-
-CallierSequential()
-
-CallierDiverging()
+  \itemize{
+    \item \code{\link{CallierQualitative}()}: create qualitative color palettes with Callier Center colors
+    \item \code{\link{CallierSequential}()}: create sequential color palettes with Callier Center colors
+    \item \code{\link{CallierDiverging}()}: create diverging color palettes with Callier Center colors
+  }
 }
 
 \section{Scale constructors (for ggplot objects)}{

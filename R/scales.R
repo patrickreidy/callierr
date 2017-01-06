@@ -15,7 +15,6 @@
 #'   and \code{\link{CallierDiverging}} for the color palette constructors;
 #'   \code{\link{scale_color_manual}} and \code{\link{discrete_scale}} for the
 #'   ggplot scale constructors.
-#' @importFrom ggplot2 scale_color_manual
 #' @export
 scale_color_callier <- function(scheme, steps, ...) {
   .other_args <- list(...)
