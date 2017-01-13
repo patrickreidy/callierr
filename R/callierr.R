@@ -1,5 +1,5 @@
 
-#' callier: Color Palettes and Scales for the Callier Center
+#' callierr: Color Palettes and Scales for the Callier Center
 #'
 #' An implementation of the color schemes set out by the Graphic Standards for
 #' the Callier Center for Communication Disorders.
@@ -47,6 +47,6 @@
 #'   }
 #'
 #' @docType package
-#' @name callier
+#' @name callierr
 NULL
 

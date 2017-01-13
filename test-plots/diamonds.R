@@ -23,7 +23,7 @@ qualitative
 
 
 
-sequential <- base + 
+sequential <- base +
   scale_color_callier(scheme = 'seq', steps = 7, direction = 'decr')
 sequential
 

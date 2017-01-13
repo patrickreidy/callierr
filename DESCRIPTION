@@ -1,6 +1,6 @@
-Package: callier
+Package: callierr
 Title: Color Palettes and Scales for the Callier Center for Communication Disorders
-Version: 0.0.0.9000
+Version: 1.0.0
 Authors@R: person("Patrick", "Reidy", email = "reidy@utdallas.edu", role = c("aut", "cre"))
 Description: An implementation of the color schemes set out by the Graphic
     Standards for the Callier Center for Communication Disorders.
@@ -8,11 +8,9 @@ Depends:
     R (>= 3.3.1)
 Imports:
     dichromat,
-    ggplot2,
-    showtext
+    ggplot2
 License: file LICENSE
 URL: https://www.utdallas.edu/brand/palette
-BugReports: https://github.com/patrickreidy/callier/issues
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 5.0.1
