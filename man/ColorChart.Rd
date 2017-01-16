@@ -4,7 +4,7 @@
 \alias{ColorChart}
 \title{Print a Color Chart for a Palette}
 \usage{
-ColorChart(palette = NULL, colorblind = TRUE)
+ColorChart(palette = NULL, colorblind = TRUE, chipsize = 25)
 }
 \arguments{
 \item{palette}{\code{NULL} (default) or a character vector, whose entries
@@ -14,6 +14,9 @@ are hexadecimal codes for values in the RGB (red-green-blue) color model.}
 color blindness (deuteranopia, protanopia, tritanopia) are shown
 (\code{TRUE}) or not (\code{FALSE)}) along with the trichromat color
 palette. Default is \code{TRUE}.}
+
+\item{chipsize}{Numeric that is passed to \code{geom_point(size = )}.
+Determines the size of the color chips in the chart. Default is 25.}
 }
 \value{
 A \code{ggplot} object with the following aesthetics:

@@ -20,13 +20,15 @@
 #'   color blindness (deuteranopia, protanopia, tritanopia) are shown
 #'   (\code{TRUE}) or not (\code{FALSE)}) along with the trichromat color
 #'   palette. Default is \code{TRUE}.
+#' @param chipsize Numeric that is passed to \code{geom_point(size = )}.
+#'   Determines the size of the color chips in the chart. Default is 25.
 #' @return A \code{ggplot} object with the following aesthetics:
 #'   colors are ordered as they occur in \code{palette} and mapped to the
 #'   x-dimension, with the x-axis labeled by hexadecimal codes;
 #'   vision is mapped to the y-dimension, with the y-axis labeled by type of
 #'   vision (trichromat, deuteranopia, protanopia, tritanopia).
 #' @export
-ColorChart <- function(palette = NULL, colorblind = TRUE) {
+ColorChart <- function(palette = NULL, colorblind = TRUE, chipsize = 25) {
   if (is.null(palette)) {
     palette <- c(
       'solarOrange'   = solarOrange(),
@@ -84,10 +86,10 @@ ColorChart <- function(palette = NULL, colorblind = TRUE) {
     .x <- ggplot2::ggplot(data = .schemes, ggplot2::aes(x = Color, y = Vision)) +
       ggplot2::theme_bw() +
       ggplot2::geom_point(data = .schemes, colour = 'white', size = 1) +
-      ggplot2::geom_point(data = .trichrom, colour = .trichrom$Hex, size = 25) +
-      ggplot2::geom_point(data = .deuteran, colour = .deuteran$Hex, size = 25) +
-      ggplot2::geom_point(data = .protan, colour = .protan$Hex, size = 25) +
-      ggplot2::geom_point(data = .tritan, colour = .tritan$Hex, size = 25)
+      ggplot2::geom_point(data = .trichrom, colour = .trichrom$Hex, size = chipsize) +
+      ggplot2::geom_point(data = .deuteran, colour = .deuteran$Hex, size = chipsize) +
+      ggplot2::geom_point(data = .protan, colour = .protan$Hex, size = chipsize) +
+      ggplot2::geom_point(data = .tritan, colour = .tritan$Hex, size = chipsize)
   } else {
     .callier <- within(.callier, {
       Vision <- ''
@@ -97,7 +99,7 @@ ColorChart <- function(palette = NULL, colorblind = TRUE) {
       ggplot2::theme_bw() +
       ggplot2::ylab('') +
       ggplot2::scale_y_discrete(breaks = NULL) +
-      ggplot2::geom_point(data = .callier, colour = .callier$Hex, size = 25)
+      ggplot2::geom_point(data = .callier, colour = .callier$Hex, size = chipsize)
   }
   return(.x)
 }
